@@ -5,10 +5,10 @@ duration: "1:20"
 creator:
     name: Micah Rich/LA
     editor: Marc Wright/ATL
-competencies: Front-end intro
+competencies: Front-end intro, Javascript, Express
 ---
 
-# AJAX with JS & JQuery
+# AJAX and Express
 
 ### Objectives
 
@@ -54,19 +54,21 @@ While we're going to be tackling some advanced front-end frameworks in the next 
 
 ## Setup - Codealong (5 mins)
 
-While we're still learning the ins-and-outs of building APIs, lets use an already-made API for today. We'll use on that works a lot like Mongo and Express and comes with RESTful resources out of the box.
+While we're still learning the ins-and-outs of building APIs, lets use an already-made API for today. We'll use one that works a lot like Mongo and Express and comes with RESTful resources out of the box.
 
 That handy thing lives at https://api.doughnuts.ga/doughnuts – it's a simple dummy data service that'll let us do GETs & POSTs quickly. You can quickly check out https://www.doughnuts.ga/ to see what it's about.
 
-While you're at it, in the starter-code folder, we've got a super basic index and a CSS file to get started. Nothing fancy.
+While you're at it, in the starter-code folder, we've got a super basic Express app to get started. Nothing fancy.
 
-Open up your `index.html` in a browser, and you'll see:
+- Clone and `cd` into `starter-code`
+- Install your NPM modules with `npm install`
+- Start your server with `nodemon` and you'll see...
 
 <img width="752" src="https://cloud.githubusercontent.com/assets/25366/9149100/765ffaae-3d4d-11e5-850d-c8b15c7900e6.png">
 
 Make sure to load up that console - we're going to be working with it quite a bit.
 
-Now, we've set a few things up for you. Besides the beautiful layout, we've got here a form with an input  and a select dropdown for you. We've also already included jQuery, though we won't use that for the first few minutes.
+Now, we've set a few things up for you. Besides the beautiful layout, we've got a form with an input and a select dropdown for you. Also, we've already included jQuery, though we won't use that for the first few minutes.
 
 ## GET Requests - Codealong (30 mins)
 
@@ -109,7 +111,7 @@ Then, of course, we've got a function that runs if the requests works, and anoth
 
 Finally, we send our request and see what happens. In this instance, we get back an array of doughnuts.
 
-#### jQuery GET Requests
+#### jQueryAJAX GET Requests
 
 While it's good to have seen the straight old-school Vanilla JS way of doing it, we've got a lot of libraries these days that are designed to get you there faster - jQuery is one of those libraries.
 
