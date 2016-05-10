@@ -52,6 +52,25 @@ As you're learning how to build APIs on the server side, you need to start learn
 
 While we're going to be tackling some advanced front-end frameworks in the next unit, you, as a junior full-stack developer, need to be able to do something awesome with the APIs you're learning to make. So we're going to tackle the basics and build on them even further, later.
 
+## Let's look at the web's plumbing - (5 mins)
+
+The core of it a web client (which may be a browser) makes a request to a web server. A web server makes a response. Let's take a closer look...
+
+**YOU DO**
+
+- Go to Chrome 
+- Open the Javascript console 
+- Choose the Network tab, make sure the red "record" button is red and "Preserve log" is checked.
+- Then go to your favorite website.
+
+Down the left side of the screen you see all the requests that went into assembling that webpage. Click on one line, and you can look at all the data that went back and forth for that one request.
+
+## Useful tools in Chrome: `jquery-injector`
+
+jQuery is the most widely used Javascript library in the world, but occasionally you'll encounter a site that doesn't use it. If so, you can inject it using a handy extension called [jquery-injector](https://chrome.google.com/webstore/detail/jquery-injector/indebdooekgjhkncmgbkeopjebofdoid?hl=en).
+
+
+
 ## Setup - Codealong (5 mins)
 
 While we're still learning the ins-and-outs of building APIs, lets use an already-made API for today. We'll use one that works a lot like Mongo and Express and comes with RESTful resources out of the box.
@@ -157,9 +176,86 @@ In jQuery's documentation you can find all the chainable callback function possi
 Now, using your console, I want to you to try a few more API endpoints:
 
 - Get a single donut and spit out the JSON collection in the console
-- Use the more generic [$.ajax](http://api.jquery.com/jquery.ajax/) to do the same request
 - Modify that donut by changing it's flavor
 - Add a new donut to the list with style and flavor
+- Use the more generic [$.ajax](http://api.jquery.com/jquery.ajax/) to do the same request
+<details>
+	<summary><em>more details</em></summary>
+	
+	"Ajax" refers to the ability of JavaScript to make HTTP requests asynchronously (a.k.a. "in the background") and act on the results directly without having the browser load a new page. Just like DOM manipulation and event handling, jQuery gives us a high-level interface to the browser's Ajax capabilities through the $.ajax function.
+	
+	Most Ajax interactions use the JSON data format for requests and responses.
+	
+	### GET Examples
+	
+	####Standard Example
+	
+	```javascript
+	$.ajax({
+	  url: 'http://localhost:8000/animals',
+	  type: 'POST',
+	  dataType: 'json',
+	  data: {"animal":
+	  {"name": animal,
+	  "sound": sound}
+	}})
+	```
+	
+	#### OMDBI Example
+	
+	```javascript
+	$.ajax({
+		url: 'http://www.omdbapi.com/?t=Star+Wars&y=&plot=short&r=json',
+		type: "GET",
+		dataType: 'json',
+		success: function(data) {
+			$('body').append(data.Title + " was released in " + data.Year + "<hr><br>");
+		}
+	});
+	```
+	
+	#### Shake-it-speare
+	```javascript
+	$.ajax({
+		url: 'http://shakeitspeare.com/api/poem',
+		type: "GET",
+		dataType: 'json',
+		success: function(data) {
+			var data = data;
+			//console.log(data);
+			$('body').append(data.poem);
+			//alert("huzzah! we did it guys!");
+		},
+		fail: function(error) {
+			console.log(error);
+		}
+	});
+	```
+	
+	### POST examples
+	
+	```javascript
+	 var animal = $("#animalName").val();
+	    var sound = $("#animalSound").val();
+	
+	    // alert(animal);
+	
+	    $.ajax({
+	      url: 'http://localhost:8000/animals',
+	      type: 'POST',
+	      dataType: 'json',
+	      data: {"animal":
+	      {"name": animal,
+	      "sound": sound}
+	    }})
+	```
+
+</details>
+
+## Exercise
+
+[AJAX Doughnuts Exercise](https://github.com/ATL-WDI-Exercises/js-ajax-doughnuts-exercise/tree/master)
+
 
 
 ## Conclusion (5 mins)
@@ -169,6 +265,9 @@ Now, using your console, I want to you to try a few more API endpoints:
 - How do you do a PUT, POST, or DELETE request in jQuery?
 
 #### Extra Reading
+
+- [You Might not Need jQuery](http://youmightnotneedjquery.com/)
 - [`No 'Access-Control-Allow-Origin' header is present on the requested resource` – WTF?](https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/)
 - [What is Cross Origin Resource Sharing (CORS)?](https://www.maxcdn.com/one/visual-glossary/cors/)
 - [Using CORS with Express](http://enable-cors.org/server_expressjs.html)
+- [YouTube - AJAX using $.getJSON](https://www.youtube.com/watch?v=dIdrhawUe6k)
