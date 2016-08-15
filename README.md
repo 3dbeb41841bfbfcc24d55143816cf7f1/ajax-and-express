@@ -31,16 +31,7 @@ That is a tremendous amount of stuff. In the first couple of weeks we learned ho
 
 (ST-WG) Think back to the first couple weeks of class, whats the difference between synchronous and asynchronous program execution? More importantly, what kind of things can we do with non blocking asynchronous program execution?
 
-### RESTful routes chart
-
- | Request action | Path format            | Path example  | Description                      |
- | -------------- | ---------------------- | ------------- | -------------------------------- |
- | `GET`          | `/path/to/resource`    | `/cars/:id`   | Retrieve a resource              |
- | `GET`          | `/path/to/container/`  | `/cars/`      | List of resources in a container |
- | `POST`         | `/path/to/parent/`     | `/cars/`      | Create new resource in container |
- | `PUT`          | `/path/to/resource`    | `/cars/:id`   | Replace a resource               |
- | `PATCH`        | `/path/to/resource`    | `/cars/:id`   | Update a resource                |
- | `DELETE`       | `/path/to/resource`    | `/cars/:id`   | Delete a resource                |
+### What are RESTful routes?
 
 ## APIs ##
 ### What is an API?
