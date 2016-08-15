@@ -1,9 +1,5 @@
 # Ajax #
 
-### :bar_chart: I do
-### :bar_chart: We do
-### :bar_chart: You do
-
 ## Outline ##
 * [Introduction](#introduction)
   - Learning objectives
@@ -14,6 +10,7 @@
 * [Asynchronous requests](#asynchronous-requests)
   - T&T: Google Maps
 * [Ajax](#ajax)
+  - What is Ajax?
 
 ## Introduction ##
 ### Learning objectives
@@ -66,11 +63,10 @@ This definition is closer to our web development concept of APIs:
 
 Also theck out the image below that quote on the blog, let's extend it by adding our parts in there.
 
-![alt-txt](https://zapier.cachefly.net/static/CpTucd/images/learn/apis/communicating-with-server.jpg)
+<img width="500" src="https://zapier.cachefly.net/static/CpTucd/images/learn/apis/communicating-with-server.jpg">
 
 
 ### Where to find APIs
-#### API Exploration
 
 APIs are published everywhere. Chances are good that most major content sources you follow online publish their data in some type of serialized format. Heck, [even Marvel publishes an API](http://developer.marvel.com/documentation/getting_started). Look around for a "Developers" section on major websites.
 
@@ -78,11 +74,13 @@ APIs are published everywhere. Chances are good that most major content sources 
 | API | Sample URL |
 |-----|------------|
 | **[Giphy](https://github.com/Giphy/GiphyAPI)** | `http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC` |
-| **[Marvel](http://developer.marvel.com/documentation/getting_started)** | `http://developer.marvel.com/documentation/getting_started` |
-| **[OMDB API](http://www.omdbapi.com/)** | `http://www.omdbapi.com/?t=Game%20of%20Thrones&Season=1` |
-| **[StarWars](http://swapi.co/)** | `http://swapi.co/api/people/3` |
-| **[Stocks](http://dev.markitondemand.com/MODApis/)** | `http://dev.markitondemand.com/Api/Quote/xml?symbol=AAPL` |
+| **[Open Movie DataBase](http://www.omdbapi.com/)** | `http://www.omdbapi.com/?t=Game%20of%20Thrones&Season=1` |
+| **[Star Wars](http://swapi.co/)** | `http://swapi.co/api/people/3` |
+| **[Shakeitspeare](http://shakeitspeare.com/)** | `http://shakeitspeare.com/api/poem` |
+| **[Stocks](http://dev.markitondemand.com/MODApis/)**\* | `http://dev.markitondemand.com/Api/Quote/xml?symbol=AAPL` |
 | **[This for That](http://itsthisforthat.com/)** | `http://itsthisforthat.com/api.php?json` |
+
+###### \* Did you try sending `GET` requests to the example API endpoints? What's different about the data from this Stocks API?
 
 **Where to find even more APIs**
 
@@ -110,7 +108,7 @@ Ajax is the name of a set of technologies in web development that allow for asyn
 
 -- Jesse James Garrett, ["Ajax: A New Approach to Web Applications"](http://adaptivepath.org/ideas/ajax-new-approach-web-applications/)
 
-###### You can tell we are time travelling, since the blog praises the design of the **iPod**.
+You can tell we are time travelling, since the blog praises the design of the **iPod**!
 
 Ajax (Asynchronous JavaScript and XML) is a method of building interactive applications for the Web that processes user requests immediately, without re-rendering a whole page.
 
@@ -118,12 +116,12 @@ Ajax (Asynchronous JavaScript and XML) is a method of building interactive appli
 
 In general the process looks like this – use JavaScript on the client side to hit an API (without reloading a page), then use the _data_ you get back to manipulate the DOM somehow if you need to. This DOM manipulation can take the form of rendering a template or just changing a number on the page.
 
-##### Minimalistic definition of Ajax
+#### Minimalistic definition of Ajax
 > Client-side technologies / techniques that allow two-way communication between the client and the server.
 
-###### &mdash; Chris Shiflett, ["Ajax Is Not an Acronym"](http://shiflett.org/blog/2007/apr/ajax-is-not-an-acronym)
+&mdash; Chris Shiflett, ["Ajax Is Not an Acronym"](http://shiflett.org/blog/2007/apr/ajax-is-not-an-acronym)
 
-##### Advantages
+#### Advantages
 
 - __Faster__ - This is the most obvious reason for using to Ajax on your frontend: Ajax allows easier and quicker interaction between user and website as pages are not reloaded for content to be displayed.  The server doesn't have to get data, render HTML, and then spit it out, it just has to get data and your already-loaded frontend does the rest.
 
@@ -131,7 +129,7 @@ In general the process looks like this – use JavaScript on the client side to 
 
 - __Backend Separated from Frontend__ - Applications that use Ajax-heavy frontends means developers don't have to work on both sides of the stack at the same time. Some developers can be dedicated to building an API that just serves data, and others can focus on consuming that data and building interfaces.
 
-##### Disadvantages
+#### Disadvantages
 
 - __The back and refresh button are rendered useless__ - Since things are loaded dynamically on a page, without that page reloading (or more importantly a URL being changed), clicking the back or refresh button don't work the way you're used to. That's actually a pretty big deal – UX designers are very familiar with the fact that users are _accustomed_ to being able to hit back when they need to. Some advanced front-end frameworks have tried to solve this issue with clever workarounds, but that's not always the case and not always accurate.
 
@@ -139,13 +137,14 @@ In general the process looks like this – use JavaScript on the client side to 
 
 - __You have to consider the UX even more__ - While UX is crucial for _any_ application, the fact that a page doesn't refresh means you have to be even more considerate of what a user is experiencing. If something in your JavaScript goes wrong, your Ajax breaks, and you don't have failsafes thoughtfully built in, your user might be clicking a button and seeing absolutely nothing happen. Most common users won't have their consoles open to notice any errors.
 
-##### Why are we learning it?
+#### Why are we learning it?
 As you're learning how to build APIs on the server side, you need to start learning how to consume your APIs on the client side.
 
 While we're going to be tackling some advanced front-end frameworks in the next unit, you, as a junior full-stack developer, need to be able to do something awesome with the APIs you're learning to make. So we're going to tackle the basics and build on them even further, later.
 
 
-#### **Example: `XMLHttpRequest` GET**
+#### Examples
+##### **Example: `XMLHttpRequest` GET**
 
 ```javascript
 function reqListener () {
@@ -169,7 +168,7 @@ The `open()` method can also take a few optional arguments, including `async`.
 
 * `async` is an **optional** boolean value that indicates the nature of the request. **By default, all requests are async.**
 
-#### **Example: `XMLHttpRequest GET`, annotated**
+##### **Example: `XMLHttpRequest GET`, annotated**
 
 ```javascript
 function reqListener () {
@@ -189,7 +188,7 @@ oReq.open("GET", "https://www.omdbapi.com/?t=Moneyball");
 oReq.send();
 ```
 
-#### **Example: `jQuery.ajax()` GET**
+##### **Example: `jQuery.ajax()` GET**
 
 ```javascript
 $.ajax({
@@ -203,129 +202,27 @@ $.ajax({
 
 
 
-## everything else ##
-### bonus: APIs that require a key
-### GET Examples
-#### Standard Example
-	
-	```javascript
-	$.ajax({
-	  url: 'http://localhost:8000/animals',
-	  type: 'POST',
-	  dataType: 'json',
-	  data: {"animal":
-	  {"name": animal,
-	  "sound": sound}
-	}})
-	```
-	
-	#### OMDBI Example
-	
-	```javascript
-	$.ajax({
-		url: 'http://www.omdbapi.com/?t=Star+Wars&y=&plot=short&r=json',
-		type: "GET",
-		dataType: 'json',
-		success: function(data) {
-			$('body').append(data.Title + " was released in " + data.Year + "<hr><br>");
-		}
-	});
-	```
-	
-	#### Shake-it-speare
-	```javascript
-	$.ajax({
-		url: 'http://shakeitspeare.com/api/poem',
-		type: "GET",
-		dataType: 'json',
-		success: function(data) {
-			var data = data;
-			//console.log(data);
-			$('body').append(data.poem);
-			//alert("huzzah! we did it guys!");
-		},
-		fail: function(error) {
-			console.log(error);
-		}
-	});
-	```
-	
-	### POST examples
-	
-	```javascript
-	 var animal = $("#animalName").val();
-	    var sound = $("#animalSound").val();
-	
-	    // alert(animal);
-	
-	    $.ajax({
-	      url: 'http://localhost:8000/animals',
-	      type: 'POST',
-	      dataType: 'json',
-	      data: {"animal":
-	      {"name": animal,
-	      "sound": sound}
-	    }})
-	```
-
-</details>
-
-
-#### Conclusion (5 mins)
+## Conclusion
 - What's the main use case of Ajax? Why would anyone use it?
 - How do you do a simple GET request in vanilla JS?
 - How do you do a GET request with jQuery?
 - How do you do a PUT, POST, or DELETE request in jQuery?
 
-#### Extra Reading
+### Extra Reading
 
+- https://github.com/ATL-WDI-Curriculum/ajax-and-express
+- https://github.com/ga-wdi-lessons/api-intro-with-ajax
+- http://adaptivepath.org/ideas/ajax-new-approach-web-applications/
+- http://shiflett.org/blog/2007/apr/ajax-is-not-an-acronym
+- https://zapier.com/learn/apis/chapter-1-introduction-to-apis/
+- https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/Using_XMLHttpRequest
 - [You Might not Need jQuery](http://youmightnotneedjquery.com/)
-- [`No 'Access-Control-Allow-Origin' header is present on the requested resource` – WTF?](https://jvaneyck.wordpress.com/2014/01/07/cross-domain-requests-in-javascript/)
 - [What is Cross Origin Resource Sharing (CORS)?](https://www.maxcdn.com/one/visual-glossary/cors/)
 - [Using CORS with Express](http://enable-cors.org/server_expressjs.html)
 - [YouTube - Ajax using $.getJSON](https://www.youtube.com/watch?v=dIdrhawUe6k)
+
 #### Screencasts (via https://github.com/ga-wdi-lessons/js-ajax/)
 - [ajax 1](https://youtu.be/K4zRqJm7sXU)
 - [ajax 2](https://youtu.be/WoA5LnPXWB8)
 - [ajax 3](https://youtu.be/3xUy5QmrBuc)
-
-
-#### Let's look at the web's plumbing - (5 mins)
-
-The core of it a web client (which may be a browser) makes a request to a web server. A web server makes a response. Let's take a closer look...
-
-**YOU DO**
-
-- Go to Chrome 
-- Open the Javascript console 
-- Choose the Network tab, make sure the red "record" button is red and "Preserve log" is checked.
-- Then go to your favorite website.
-
-Down the left side of the screen you see all the requests that went into assembling that webpage. Click on one line, and you can look at all the data that went back and forth for that one request.
-
----
-
-
-
-## Notes
-
-### :heavy_exclamation_mark: clarify specific goal / desired outcome 
-* After this, we will be able to answer the question, "what is Ajax"
-* goal: Understand and implement Ajax client-side rendering.
-
-### :heavy_exclamation_mark: attention grabber (story, question,)
-google maps t&t exercise
-
-### :heavy_exclamation_mark: need, create interest by exposing need (matter of self-interest)
-When does the server run our stuff? Only in response to q request.
-We can visit URLs, submit forms, use other tools like httpie
-We can redirect using Express routes, but the server only has one chance to respond.
-Our content is assembled server-side and sent over, which we know because we wrote EJS templates that got converted to regular HTML.
-The server is where that magic happens, then the response gets dropped in the tube and whisked away to a client. It's built, it's shipped, it's gone.
-
-### :heavy_exclamation_mark: satisfaction, show how need is met, address objections
-
-### :heavy_exclamation_mark: viz, dramatic picture / benefits, create desire
-
-### :heavy_exclamation_mark: action, ask for decision or action
 
